@@ -30,8 +30,8 @@ research-practice/
 - **`results/`**：存放实验产出，如图表（`figures/`）和结果表格（`tables/`），
   便于撰写论文或报告时直接引用。
 
-> 说明：`data/` 和 `results/` 下的文件默认被 `.gitignore` 忽略（只保留空目录占位的 `.gitkeep`），
-> 避免把大文件或可再生成的产物提交到仓库。如需提交某些小文件，可在 `.gitignore` 中单独放行。
+> 说明：`data/` 下的文件默认被 `.gitignore` 忽略（只保留空目录占位的 `.gitkeep`），避免把大文件提交到仓库。
+> `results/` 下的图表和表格会正常提交，方便直接在 GitHub 上查看。
 
 ## 快速开始
 
