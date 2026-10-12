@@ -55,3 +55,24 @@ sys.path.append("..")
 
 from src import utils  # 将 utils 替换为 src/ 中实际的模块名
 ```
+
+## 示例：糖尿病数据集探索性分析
+
+使用 sklearn 自带的 `load_diabetes` 数据集（442 名患者，10 个基线特征 + 一年后病情进展指标）：
+
+```bash
+python -m src.run_eda
+```
+
+| 文件 | 内容 |
+|---|---|
+| `src/data.py` | `load_diabetes_df()`：加载数据为 DataFrame（默认原始单位）；`DIABETES_LABELS`：变量中文名 |
+| `src/eda.py` | `describe()` 描述统计、`plot_distributions()` 分布图、`plot_correlation_heatmap()` 相关性热图 |
+| `src/run_eda.py` | 一键运行，生成下列结果 |
+
+输出：
+
+- `results/figures/diabetes_distributions.png`：各变量分布
+- `results/figures/diabetes_correlation_heatmap.png`：相关性热图
+- `results/tables/diabetes_describe.csv`：描述统计（缺失数、均值、标准差、分位数、偏度、峰度）
+- `results/tables/diabetes_correlation.csv`：相关系数矩阵
