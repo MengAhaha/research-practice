@@ -76,3 +76,35 @@ python -m src.run_eda
 - `results/figures/diabetes_correlation_heatmap.png`：相关性热图
 - `results/tables/diabetes_describe.csv`：描述统计（缺失数、均值、标准差、分位数、偏度、峰度）
 - `results/tables/diabetes_correlation.csv`：相关系数矩阵
+
+## 示例：哪些变量最能预测疾病进展？
+
+用线性回归（先标准化）和随机森林（默认超参数）预测一年后的病情进展，两个模型使用同一组 5 折交叉验证划分：
+
+```bash
+python -m src.run_modeling
+```
+
+| 文件 | 内容 |
+|---|---|
+| `src/modeling.py` | `cross_validate_models()` 交叉验证对比、`linear_coefficients()` 线性回归系数、`forest_importance()` 随机森林重要性、`combine_importance()` 合并并排名 |
+| `src/model_plots.py` | `plot_feature_importance()` 特征重要性图、`plot_pred_vs_actual()` 预测值-真实值散点图 |
+| `src/run_modeling.py` | 一键运行，生成下列结果 |
+
+输出：
+
+- `results/figures/feature_importance.png`：特征重要性（左：线性回归标准化系数；右：随机森林置换重要性）
+- `results/figures/pred_vs_actual.png`：交叉验证预测值 vs 真实值
+- `results/tables/cv_scores_summary.csv`、`cv_scores_by_fold.csv`：交叉验证得分（R²、RMSE、MAE）
+- `results/tables/feature_ranking.csv`：各变量的系数、重要性和排名
+
+> 解读时注意：s1（总胆固醇）和 s2（低密度脂蛋白）相关系数高达 0.90，线性回归会把它们的作用相互抵消，
+> 单个系数的大小和正负不可靠；随机森林的置换重要性在验证集上计算，更适合比较变量的预测贡献。
+
+## 运行测试
+
+```bash
+pytest
+```
+
+测试位于 `tests/`，覆盖数据加载、描述统计、绘图、交叉验证、系数与重要性计算。

@@ -12,3 +12,6 @@ scikit-learn
 
 # 交互式分析
 jupyterlab
+
+# 测试
+pytest
