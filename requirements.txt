@@ -1,0 +1,14 @@
+# 数值计算与数据处理
+numpy
+pandas
+scipy
+
+# 可视化
+matplotlib
+seaborn
+
+# 机器学习 / 统计建模
+scikit-learn
+
+# 交互式分析
+jupyterlab
